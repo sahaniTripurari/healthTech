@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthAI - Daily Health Record</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/records.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon"></span>
+                <h1>Health<span class="accent">AI</span></h1>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn" data-page="home">home</button>
+                <button class="nav-btn active" data-page="record">Record</button>
+                <button class="nav-btn" data-page="dashboard">Dashboard</button>
+            </nav>
+        </header>
+
+        <!-- Record Page -->
+        <main class="page active" id="record-page">
+            <!-- Patient Profile -->
+            <section class="glass-card profile-section">
+                <h2><span class="icon">👤</span> Patient Profile</h2>
+                <div class="profile-grid">
+                    <div class="input-group">
+                        <label>User ID</label>
+                        <input type="text" id="userId" placeholder="Auto-filled" readonly value="PAT-001">
+                    </div>
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter full name">
+                    </div>
+                    <div class="input-group">
+                        <label>Age</label>
+                        <input type="number" id="age" placeholder="Age">
+                    </div>
+                    <div class="input-group">
+                        <label>Gender</label>
+                        <select id="gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Blood Group</label>
+                        <select id="bloodGroup">
+                            <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                            <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Height (cm)</label>
+                        <input type="number" id="height" placeholder="Height in cm">
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="saveProfile()">Save Profile</button>
+            </section>
+
+            <!-- Disease Intelligence -->
+            <section class="glass-card disease-section">
+                <h2><span class="icon">🩺</span> Disease Intelligence</h2>
+                <div class="disease-search-box">
+                 <input type="text" id="diseaseSearch" placeholder="Search medical conditions...">
+                 </div>
+                 <div class="disease-list-container">
+                 <div class="disease-list" id="diseaseList"></div>
+                  </div>
+  <div class="disease-tags" id="diseaseTags"></div>
+  <div class="disease-footer">
+  <button class="btn-primary" onclick="saveDiseases()">Save Diseases</button></div>
+            </section>
+
+            <!-- Dynamic Vital Tracking -->
+            <section class="glass-card vitals-section" id="vitalsSection" style="display: none;">
+                <h2><span class="icon">📊</span> Vital Tracking</h2>
+                <div id="vitalFields"></div>
+            </section>
+
+           <!-- SECTION 4: Lifestyle -->
+        <div class="section glass-card">
+            <h2>🌿 Lifestyle Metrics</h2>
+            <div class="lifestyle-grid">
+                <div class="metric-card">
+                    <label>Sleep (hrs)</label>
+                    <input type="range" id="sleep" min="0" max="12" value="7">
+                    <div class="progress-ring" data-max="12"><span id="sleepVal">7</span></div>
+                </div>
+                <div class="metric-card">
+                    <label>Water (L)</label>
+                    <input type="range" id="water" min="0" max="5" step="0.5" value="2">
+                    <div class="progress-ring" data-max="5"><span id="waterVal">2</span></div>
+                </div>
+                <div class="metric-card">
+                    <label>Steps</label>
+                    <input type="range" id="steps" min="0" max="20000" value="5000">
+                    <div class="progress-ring" data-max="10000"><span id="stepsVal">5000</span></div>
+                </div>
+                <div class="metric-card">
+                    <label>Exercise (min)</label>
+                    <input type="range" id="exercise" min="0" max="120" value="30">
+                    <div class="progress-ring" data-max="60"><span id="exerciseVal">30</span></div>
+                </div>
+            </div>
+            <div class="lifestyle-footer">
+    <button class="btn-primary" onclick="saveLifestyle()">
+        Save Lifestyle
+    </button>
+</div>
+        </div>
+
+            <!-- AI Health Insight -->
+            <section class="glass-card ai-section">
+                <h2><span class="icon">🧠</span> AI Health Insights</h2>
+                <button class="btn-ai" onclick="analyzeHealth()"> Analyze with AI</button>
+                <div id="aiLoader" class="loader hidden"></div>
+                <div id="aiResult" class="ai-result hidden">
+                    <div class="risk-badge" id="riskBadge"></div>
+                    <div class="ai-summary" id="aiSummary"></div>
+                    <div class="ai-recommendations" id="aiRecommendations"></div>
+                </div>
+            </section>
+
+            <!-- Submit Button -->
+            
+        </main>
+
+        <!-- Dashboard Page -->
+        <main class="page" id="dashboard-page" >
+            <!-- Summary Cards -->
+            <div class="summary-grid">
+                <div class="glass-card summary-card">
+                    <h3>Total Conditions</h3>
+                    <div class="metric">3</div>
+                </div>
+                <div class="glass-card summary-card">
+                    <h3>Avg Sleep (7d)</h3>
+                    <div class="metric">6.8h</div>
+                </div>
+                <div class="glass-card summary-card">
+                    <h3>Monthly Avg Sugar</h3>
+                    <div class="metric">112 mg/dL</div>
+                </div>
+                <div class="glass-card summary-card">
+                    <h3>Health Score</h3>
+                    <div class="health-gauge">87</div>
+                </div>
+            </div>
+
+            <!-- Trend Charts (Canvas placeholders) -->
+            <section class="glass-card charts-section">
+                <h2>📈 30-Day Trends</h2>
+                <div class="charts-grid">
+                    <canvas id="sugarChart" width="300" height="200"></canvas>
+                    <canvas id="bpChart" width="300" height="200"></canvas>
+                    <canvas id="weightChart" width="300" height="200"></canvas>
+                    <canvas id="sleepChart" width="300" height="200"></canvas>
+                </div>
+            </section>
+
+            <!-- Latest AI Insight -->
+            <section class="glass-card ai-panel">
+                <h3>Latest AI Analysis</h3>
+                <div class="latest-insight">
+                    <div class="risk-badge moderate">Moderate Risk</div>
+                    <p>Stable vitals with room for lifestyle improvement. Focus on consistent sleep patterns.</p>
+                </div>
+            </section>
+
+            <!-- Watch Patient -->
+            <section class="glass-card watch-section">
+                <h3>👥 Follow Patients</h3>
+                <div class="search-input">
+                    <input type="text" placeholder="Search by User ID">
+                    <button>+ Watch</button>
+                </div>
+                <div class="watchlist" id="watchlist"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toasts -->
+    <div class="toast-container" id="toastContainer"></div>
+<footer class="main-footer">
+    <p>© 2026 AI Health Intelligence System | Built for Smart Preventive Care</p>
+</footer>
+    <script src="./script/records.js"></script>
+<script>
+
+</script></body>
+</html>

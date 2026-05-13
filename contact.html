@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - HealthAI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./style/contact.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <h1 class="logo">Health<span>AI</span></h1>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ai-assistant.html">AI Assistant</a></li>
+      <li><a href="record.html">Records</a></li>
+      <li><a href="dashbord.html">Dashboard</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a class="active" href="contact.html">Contact</a></li>
+    </ul>
+
+    <!-- KEEP onclick -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+
+<section class="contact-hero">
+  <h2>Let’s Connect</h2>
+  <p>We’d love to hear your thoughts, feedback or collaboration ideas.</p>
+</section>
+
+<section class="contact-wrapper">
+
+  <div class="contact-card form-card">
+    <h3>Send a Message</h3>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <p id="formStatus"></p>
+    </form>
+  </div>
+
+  <div class="contact-card details-card">
+    <h3>Contact Details</h3>
+    <p><strong>Email:</strong> info@aihealthcare.com</p>
+    <p>This is a hackathon AI healthcare innovation project focused on intelligent medical assistance and monitoring.</p>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p>© 2026 HealthAI. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="./script/contact.js"></script>
+</body>
+</html>

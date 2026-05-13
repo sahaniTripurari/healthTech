@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Assistant – HealthAI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style/ai-assistant.css">
+</head>
+
+<body class="ai-page">
+<nav class="navbar">
+  <h1>HealthAI</h1>
+</nav>
+
+<section class="chat-section">
+  <div class="chat-container" id="chatContainer">
+    <div class="message ai">
+      👋 Hello! I am your AI Health Assistant.<br>
+      You can type or speak your health problem.
+    </div>
+  </div>
+</section>
+
+<div class="chat-box">
+  <textarea id="userInput" placeholder="Describe your symptoms..."></textarea>
+  <div class="options">
+    <button onclick="openMedia()">📎</button>
+    <button onclick="startVoice()">🎤</button>
+    <button onclick="toggleVoice()">🔊</button>
+    <button class="send">Send</button>
+  </div>
+</div>
+
+<script src="./script/ai-assistant.js"></script>
+</body>
+</html>

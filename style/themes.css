@@ -1,0 +1,13 @@
+:root {
+  --bg-main: linear-gradient(135deg,#0f0f23,#1a1a2e);
+  --glass: rgba(255,255,255,0.08);
+  --primary: #00d4ff;
+  --text-main: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard – HealthAI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- COMMON -->
+<link rel="stylesheet" href="./style/themes.css">
+<link rel="stylesheet" href="./style/navbar.css">
+<link rel="stylesheet" href="./style/dashboard.css">
+
+<!-- CHART + SOCKET -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+
+<body class="dashboard-page">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h1 class="logo">HealthAI</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ai-assistant.html">AI Assistant</a></li>
+      <li><a href="./record.html">Records</a></li>
+      <li><a class="active" href="./dashbord.html">Dashboard</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="dashboard-container">
+
+<h1>Doctor Dashboard – AI Patient Monitoring</h1>
+
+<!-- ================= SEARCH ================= -->
+<section class="card">
+  <h2>Search Patient</h2>
+  <div class="search-box">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Enter Patient Name or ID"
+    />
+    <button class="btn" onclick="searchPatients()">Search</button>
+  </div>
+</section>
+
+<!-- ================= PATIENT LIST ================= -->
+<section class="card">
+<h2>Patient List</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Age</th>
+  <th>Risk</th>
+  <th>Action</th>
+</tr>
+</thead>
+
+<tbody id="patientTable">
+<tr>
+  <td colspan="4">Search patient to view data</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- ================= STATS ================= -->
+<section class="stats-grid">
+  <div class="stat-card total">—<br><span>Total Patients</span></div>
+  <div class="stat-card critical">—<br><span>Critical</span></div>
+  <div class="stat-card stable">—<br><span>Stable</span></div>
+  <div class="stat-card alerts">—<br><span>Alerts</span></div>
+</section>
+
+
+
+<!-- ================= AI SUMMARY ================= -->
+<section class="card">
+<h2>AI Health Summary</h2>
+
+<p id="aiSummary">
+Select a patient to view AI analysis.
+</p>
+
+<p>
+<b>Risk Level:</b>
+<span class="risk" id="aiRisk">--</span>
+</p>
+</section>
+
+<!-- ================= CHARTS ================= -->
+<section class="card">
+<h2>Health Monitoring Trends</h2>
+
+<div class="chart-box">
+  <canvas id="bpChart"></canvas>
+</div>
+
+<div class="chart-box">
+  <canvas id="sugarChart"></canvas>
+</div>
+
+<div class="chart-box">
+  <canvas id="heartChart"></canvas>
+</div>
+</section>
+
+<!-- ================= ALERTS ================= -->
+<section class="card">
+<h2>Alerts & Notifications</h2>
+<ul class="alerts">
+  <li class="alert info">System ready. Live monitoring enabled.</li>
+</ul>
+</section>
+
+</main>
+
+<!-- DASHBOARD SCRIPT -->
+<script src="./script/dashbord.js"></script>
+
+</body>
+</html>

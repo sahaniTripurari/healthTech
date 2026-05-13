@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthAI – AI Patient Monitoring</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="./style/themes.css">
+
+<link rel="stylesheet" href="./style/ai-assistant.css">
+<link rel="stylesheet" href="./style/records.css">
+<link rel="stylesheet" href="./style/about.css">
+<link rel="stylesheet" href="./style/contact.css">
+<link rel="stylesheet" href="./style/dashboard.css">
+<link rel="stylesheet" href="./style/home.css">
+
+<!-- Preload critical fonts -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+</head>
+<body class="home-page">
+ <nav class="navbar">
+  <div class="nav-container">
+    
+    <div class="logo">
+      Health<span>AI</span>
+    </div>
+
+    <!-- ✅ FIX: navAuth bahar nikala — ab nav-links ke andar nahi hai -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+      <li><a href="#" class="nav-link" data-page="ai-assistant">AI Assistant</a></li>
+      <li><a href="#" class="nav-link" data-page="record">Record</a></li>
+      <li><a href="#" class="nav-link" data-page="dashboard">Dashboard</a></li>
+      <li><a href="#" class="nav-link" data-page="about">About</a></li>
+      <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+    </ul>
+
+    <!-- Auth Section — nav-links ke BAHAR, overlap nahi hoga -->
+    <div id="navAuth" class="nav-auth-section">
+      <a href="#" id="loginBtn" class="nav-signin-btn">Sign In</a>
+    </div>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+</nav>
+<section id="home" class="page active">
+<div id="overlay" class="overlay"></div>
+
+<div id="authCard" class="auth-card">
+
+  <div class="auth-header">
+    <h3>Sign in</h3>
+    <span id="closeAuth">&times;</span>
+  </div>
+
+  <p class="auth-sub">
+    Get access to more learning features
+  </p>
+
+  <p class="switch-text">
+    Don't have an account?
+    <span id="goRegister">Register</span>
+  </p>
+
+  <div class="social-row">
+    <button class="social-btn" type="button" onclick="googleLogin()"><i class="fab fa-google"></i></button>
+    <button class="social-btn"><i class="fab fa-facebook-f"></i></button>
+    <button class="social-btn"><i class="fab fa-github"></i></button>
+  </div>
+
+  <div class="divider"><span>or</span></div>
+
+  <!-- LOGIN -->
+  <form id="loginForm">
+    <input type="email" id="loginEmail" placeholder="Email" required>
+
+    <div style="position:relative;">
+  <input type="password" id="loginPassword" placeholder="Password" required>
+  <span id="togglePassword"
+        style="position:absolute;right:10px;top:12px;cursor:pointer;">
+        👁
+  </span>
+</div>
+
+<a href="#" id="forgotPassword"
+   style="font-size:13px;color:#04AA6D;">Forgot Password?</a>
+    <button type="submit" class="auth-btn">Sign In</button>
+  </form>
+
+  <!-- REGISTER -->
+  <form id="registerForm" style="display:none;">
+    <input type="text" id="regName" placeholder="Full Name" required>
+    <input type="email" id="regEmail" placeholder="Email" required>
+    <input type="password" id="regPassword" placeholder="Password" required>
+    <button type="submit" class="auth-btn">Create Account</button>
+
+    <p class="switch-text">
+      Already have account?
+      <span id="goLogin">Sign in</span>
+    </p>
+  </form>
+
+</div>
+
+
+<!-- HERO -->
+<section class="home-hero">
+  <div class="home-hero-content">
+    <h1>Revolutionizing Healthcare with AI</h1>
+    <p>Quick, accurate and effortless patient record analysis & monitoring</p>
+    <a href="./ai-assistant.html" class="home-btn">Try AI Assistant</a>
+  </div>
+
+  <!-- CANVAS -->
+  <canvas id="aiCanvas"></canvas>
+</section>
+
+<!-- CONCEPT -->
+<section class="home-section">
+  <h2>AI Healthcare Concept</h2>
+  <div class="home-cards">
+    <div class="home-card">
+      <h3>AI Analysis</h3>
+      <p>Natural language symptom analysis with smart insights.</p>
+    </div>
+    <div class="home-card">
+      <h3>Record Management</h3>
+      <p>Secure patient records with quick search & filters.</p>
+    </div>
+    <div class="home-card">
+      <h3>Monitoring Dashboard</h3>
+      <p>Visual health trends with interactive data.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="home-section dark">
+  <h2>How It Works</h2>
+  <div class="home-steps">
+    <div class="home-step">Input Symptoms</div>
+    <div class="home-step">AI Analysis</div>
+    <div class="home-step">Get Guidance</div>
+    <div class="home-step">Monitor Progress</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="home-footer">
+  <div class="home-footer-container">
+
+    <div class="home-footer-box">
+      <h3>About Us</h3>
+      <p>AI based healthcare system for analysis, monitoring & assistance.</p>
+    </div>
+
+    <div class="home-footer-box">
+      <h3>Quick Links</h3>
+      <ul>
+        <li>Home</li>
+        <li>AI Assistant</li>
+        <li>Dashboard</li>
+        <li>Records</li>
+      </ul>
+    </div>
+
+    <div class="home-footer-box">
+      <h3>Contact</h3>
+      <p>Email: healthai@demo.com</p>
+      <p>Phone: 02692-250769</p>
+      <p>Anand, Gujarat</p>
+    </div>
+
+  </div>
+  
+  <p class="home-footer-bottom">© 2025 HealthAI</p>
+</footer>
+</section>
+
+<section id="ai-assistant" class="page">
+  <canvas id="earthCanvas"></canvas>
+
+  <section class="chat-section">
+    <div class="chat-container" id="chatContainer">
+      <div class="message ai">
+        👋 Welcome to HealthAI. Describe your symptoms.
+      </div>
+    </div>
+  </section>
+
+  <div class="input-wrapper">
+    <div class="chat-input">
+
+      <button class="icon-btn" onclick="startVoice()" id="voiceBtn">🎤</button>
+
+      <textarea id="userInput" placeholder="Describe your symptoms..."></textarea>
+
+      <button class="send-btn" onclick="askAI()">Send</button>
+
+    </div>
+  </div>
+  </section>
+
+<section id="record" class="page">
+  <div class="app-container">
+       
+        <!-- Record Page -->
+        <div class="record-content">
+            <!-- Patient Profile -->
+            <section class="glass-card profile-section">
+                <h2><span class="icon">👤</span> Patient Profile</h2>
+                <div class="profile-grid">
+                    <div class="input-group">
+                        <label>User ID</label>
+                        <input type="text" id="userId" placeholder="Auto-filled" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter full name">
+                    </div>
+                    <div class="input-group">
+                        <label>Age</label>
+                        <input type="number" id="age" placeholder="Age">
+                    </div>
+                    <div class="input-group">
+                        <label>Gender</label>
+                        <select id="gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Blood Group</label>
+                        <select id="bloodGroup">
+                            <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                            <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Height (cm)</label>
+                        <input type="number" id="height" placeholder="Height in cm">
+                    </div>
+                </div>
+                <button class="btn-primary" id="recordSaveProfileBtn">Save Profile</button>
+            </section>
+
+            <!-- Disease Intelligence -->
+            <section class="glass-card disease-section">
+                <h2><span class="icon">🩺</span> Disease Intelligence</h2>
+                <div class="disease-search-box">
+                 <input type="text" id="diseaseSearch" placeholder="Search medical conditions...">
+                 </div>
+                 <div class="disease-list-container">
+                 <div class="disease-list" id="diseaseList"></div>
+                  </div>
+  <div class="disease-tags" id="diseaseTags"></div>
+  <div class="disease-footer">
+  <button class="btn-primary" onclick="saveDiseases()">Save Diseases</button></div>
+            </section>
+
+            <!-- Dynamic Vital Tracking -->
+            <section class="glass-card vitals-section" id="vitalsSection" style="display: none;">
+                <h2><span class="icon">📊</span> Vital Tracking</h2>
+                <div id="vitalFields"></div>
+                <button class="btn-primary" onclick="saveVitals()">Save Vitals</button>
+            </section>
+
+           <!-- SECTION 4: Lifestyle -->
+        <div class="section glass-card">
+            <h2>🌿 Lifestyle Metrics</h2>
+            <div class="lifestyle-grid">
+                <div class="metric-card">
+                    <label>Sleep (hrs)</label>
+                    <input type="range" id="sleep" min="0" max="12" value="7">
+                    <div class="progress-ring" data-max="12"><span id="sleepVal">7</span></div>
+                </div>
+                <div class="metric-card">
+                    <label>Water (L)</label>
+                    <input type="range" id="water" min="0" max="5" step="0.5" value="2">
+                    <div class="progress-ring" data-max="5"><span id="waterVal">2</span></div>
+                </div>
+                <div class="metric-card">
+                    <label>Steps</label>
+                    <input type="range" id="steps" min="0" max="20000" value="5000">
+                    <div class="progress-ring" data-max="10000"><span id="stepsVal">5000</span></div>
+                </div>
+                <div class="metric-card">
+                    <label>Exercise (min)</label>
+                    <input type="range" id="exercise" min="0" max="120" value="30">
+                    <div class="progress-ring" data-max="60"><span id="exerciseVal">30</span></div>
+                </div>
+            </div>
+            <div class="lifestyle-footer">
+    <button class="btn-primary" onclick="saveLifestyle()">
+        Save Lifestyle
+    </button>
+</div>
+        </div>
+
+            <!-- AI Health Insight -->
+            <section class="glass-card ai-section">
+                <h2><span class="icon">🧠</span> AI Health Insights</h2>
+                <button class="btn-ai" onclick="analyzeHealth()">🤖 Analyze with AI</button>
+                <div id="aiLoader" class="loader hidden"></div>
+                <div id="aiResult" class="ai-result hidden">
+                    <div class="risk-badge" id="riskBadge"></div>
+                    <div class="ai-summary" id="aiSummary"></div>
+                    <div class="ai-recommendations" id="aiRecommendations"></div>
+                </div>
+            </section>
+        </div>
+
+        
+    <!-- Toasts -->
+    <div class="toast-container" id="toastContainer"></div>
+<footer class="main-footer">
+    <p>© 2026 AI Health Intelligence System | Built for Smart Preventive Care</p>
+</footer>
+  </section>
+
+<!-- ABOUT PAGE -->
+<section id="about" class="page">
+
+  <div class="bg-blur"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>About HealthAI</h2>
+    <p>AI-powered healthcare monitoring system built for smarter decisions.</p>
+  </section>
+
+  <div class="container">
+
+    <!-- Technology Stack -->
+    <section class="card-section">
+      <h2>Technology Stack</h2>
+
+      <div class="stack-cards">
+        <div class="card">
+          <h3>Frontend</h3>
+          <p>HTML, CSS, JavaScript for responsive healthcare dashboards.</p>
+        </div>
+
+        <div class="card">
+          <h3>AI & NLP</h3>
+          <p>Advanced NLP powered by modern AI APIs for smart analysis.</p>
+        </div>
+
+        <div class="card">
+          <h3>Voice Tech</h3>
+          <p>Web Speech API for voice recognition and synthesis.</p>
+        </div>
+
+        <div class="card">
+          <h3>Secure Backend</h3>
+          <p>Secure architecture ensuring patient data privacy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unique Section -->
+    <section class="card-section">
+      <h2>Why This Project Is Unique</h2>
+      <div class="card">
+        <ul class="unique-list">
+          <li>Seamless voice interaction for natural conversations.</li>
+          <li>Real-time AI insights for immediate decision support.</li>
+          <li>User-friendly design accessible across devices.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div>
+      <h4>HealthAI</h4>
+      <p>AI-powered healthcare assistant for smarter monitoring.</p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+      <p><a href="index.html">Home</a></p>
+      <p><a href="dashbord.html">Dashboard</a></p>
+      <p><a href="ai-assistant.html">AI Assistant</a></p>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>healthai@demo.com</p>
+      <p>SYBCA Hackathon Project</p>
+    </div>
+  </div>
+
+  <p class="copyright">
+    © 2026 HealthAI. All rights reserved.
+  </p>
+</footer>
+</section>
+
+<!-- CONTACT PAGE -->
+<section id="contact" class="page">
+
+  <!-- HERO -->
+  <section class="contact-hero">
+    <h2>Let's Connect</h2>
+    <p>We'd love to hear your thoughts, feedback or collaboration ideas.</p>
+  </section>
+
+  <section class="contact-wrapper">
+
+    <div class="contact-card form-card">
+      <h3>Send a Message</h3>
+      <form id="contactForm">
+        <input type="text" id="contactName" placeholder="Your Name" required>
+        <input type="email" id="contactEmail" placeholder="Your Email" required>
+        <textarea id="contactMessage" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p id="formStatus"></p>
+      </form>
+    </div>
+
+    <div class="contact-card details-card">
+      <h3>Contact Details</h3>
+      <p><strong>Email:</strong> healthai@demo.com</p>
+      <p>
+        This is a hackathon AI healthcare innovation project focused on
+        intelligent medical assistance and monitoring.
+      </p>
+    </div>
+
+  </section>
+<footer class="contact-footer">
+  <div class="footer-inner">
+    <p>© 2026 HealthAI. All rights reserved.</p>
+  </div>
+</footer>
+</section>
+
+<!-- ================= DASHBOARD SECTION ================= -->
+<section id="dashboard" class="page">
+
+  <main class="main-content">
+
+    <!-- Dashboard Header -->
+    <section class="dashboard-header animate-in">
+      <h1 class="dashboard-title">Health Intelligence Dashboard</h1>
+      <p class="dashboard-subtitle">Real-time Patient Monitoring & Analytics</p>
+    </section>
+
+    <!-- Row 1: Profile + Calendar | Search + Users -->
+    <div class="dashboard-grid">
+
+      <!-- Profile & Calendar Card -->
+      <div class="glass-card">
+        <div class="profile-section" id="profile">
+          <div class="profile-avatar">
+            <img id="profileImage" src="" width="120" height="120" alt="Profile" loading="lazy">
+          </div>
+          <div class="profile-info">
+            <h2 id="dashboardProfileName">Loading…</h2>
+            <p id="profileAge"></p>
+            <p id="profileGender"></p>
+            <p id="profileBlood"></p>
+            <p id="profileHeight"></p>
+            <p id="profileDisease" style="color:#94a3b8;font-size:13px;margin-top:4px;"></p>
+            <div id="statusBadge"></div>
+          </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="calendar-section" style="margin-top:1.5rem;">
+          <div class="calendar-header">
+            <button class="calendar-nav" id="prevMonth">&#8249; Prev</button>
+            <h4 id="calendarTitle">—</h4>
+            <button class="calendar-nav" id="nextMonth">Next &#8250;</button>
+          </div>
+          <!-- Grid: day headers + cells rendered by JS -->
+          <div class="calendar-grid" id="calender"></div>
+          <div style="display:flex;gap:16px;margin-top:10px;font-size:11px;color:#64748b;">
+            <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#10b981;margin-right:4px;"></span>Record saved</span>
+            <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;border:2px solid #0ea5e9;margin-right:4px;"></span>Today</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search & Users Card -->
+      <div class="glass-card search-section">
+        <h3 style="margin-bottom:1rem;">🔍 Search & Add User</h3>
+        <input type="text" class="search-input" id="searchInput" placeholder="Enter User ID to search…">
+        <div id="userResult" style="margin-top:.75rem;"></div>
+
+        <div style="margin-top:1.5rem;">
+          <h4 style="color:#94a3b8;font-size:13px;margin-bottom:.75rem;">👥 Monitored Users</h4>
+          <table class="users-table">
+            <thead>
+              <tr>
+                <th>Photo</th><th>Name</th><th>Age</th><th>Gender</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /dashboard-grid -->
+
+    <!-- Vital Trends & Analytics -->
+    <div class="glass-card" style="margin-top:1.5rem;">
+      <h3 style="margin-bottom:1.5rem;">📊 Vital Trends & Monitoring</h3>
+      <div id="vitalChartsContainer" class="vital-charts-grid"></div>
+    </div>
+
+    <!-- Lifestyle Metrics -->
+    <div class="glass-card" style="margin-top:1.5rem;">
+      <h3 style="margin-bottom:1.5rem;">🌿 Lifestyle Metrics</h3>
+      <div id="lifestyleChartsContainer"></div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-grid" style="margin-top:1.5rem;">
+      <div class="glass-card summary-card">
+        <div class="summary-number" id="healthScore">0</div>
+        <div class="summary-label">Health Score</div>
+      </div>
+      <div class="glass-card summary-card">
+        <div class="summary-number" id="totalRecords">0</div>
+        <div class="summary-label">Total Records</div>
+      </div>
+      <div class="glass-card summary-card">
+        <div class="summary-number" id="alert">0</div>
+        <div class="summary-label">Active Alerts</div>
+      </div>
+      <div class="glass-card summary-card">
+        <div class="summary-number" id="usersCount">0</div>
+        <div class="summary-label">Monitored Users</div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="glass-card" style="text-align:center;margin-top:1.5rem;">
+      <button class="btn btn-primary" id="exportDataBtn">📊 Export CSV</button>
+      <button class="btn btn-secondary" id="downloadPdfBtn">📄 Download PDF</button>
+      <button class="btn btn-secondary" id="printBtn">🖨️ Print</button>
+    </div>
+
+  </main>
+
+</section>
+
+
+
+<!-- PROFILE OVERLAY -->
+<div id="profileOverlay" class="profile-overlay"></div>
+
+<!-- PROFILE DRAWER -->
+<div id="profileDrawer" class="drawer">
+
+  <div class="drawer-content">
+
+    <!-- SECTION 1 — PROFILE HEADER -->
+    <div class="profile-header">
+      <img id="profileAvatar" src="" class="avatar-large">
+      <label class="change-photo-btn">
+        Change Photo
+        <input type="file" id="photoInput" hidden accept="image/*">
+      </label>
+      <h2 id="drawerProfileName"></h2>
+      <p class="user-id">ID: <span id="profileId"></span></p>
+    </div>
+
+    <!-- SECTION 2 — BASIC INFORMATION (READ ONLY) -->
+    <div class="profile-section">
+      <h3>Basic Information</h3>
+      <div class="info-item">
+        <label>Full Name</label>
+        <input type="text" id="displayName" readonly>
+      </div>
+      <div class="info-item">
+        <label>Email</label>
+        <input type="text" id="displayEmail" readonly>
+      </div>
+      <div class="info-item">
+        <label>Account Created</label>
+        <input type="text" id="createdAt" readonly>
+      </div>
+    </div>
+
+    <!-- SECTION 3 — ACCOUNT SETTINGS (EDITABLE) -->
+    <div class="profile-section">
+      <h3>Account Settings</h3>
+      <div class="info-item">
+        <label>Change Name</label>
+        <input type="text" id="editName">
+      </div>
+      <div class="info-item">
+        <label>Change Email</label>
+        <input type="email" id="editEmail">
+      </div>
+      <div class="info-item">
+        <label>Old Password</label>
+        <input type="password" id="oldPassword" placeholder="Enter old password">
+      </div>
+      <div class="info-item">
+        <label>New Password</label>
+        <input type="password" id="editPassword" placeholder="Enter new password">
+      </div>
+      <button id="drawerSaveProfileBtn" class="primary-btn">Save Changes</button>
+    </div>
+
+    <!-- SECTION 4 — SECURITY -->
+    <div class="profile-section security-section">
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+      <button class="delete-btn">Delete Account</button>
+    </div>
+
+  </div><!-- /drawer-content -->
+</div><!-- /profileDrawer -->
+
+
+<!-- ===================== SCRIPTS ===================== -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+<script src="./script/googleHandler.js" defer></script>
+<script src="./script/home.js" defer></script>
+<script src="./script/ai-assistant.js" defer></script>
+<script src="./script/dashbord.js" defer></script>
+<script src="./script/records.js" defer></script>
+<script src="./script/about.js" defer></script>
+<script src="./script/contact.js" defer></script>
+
+</body>
+</html>

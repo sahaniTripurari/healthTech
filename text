@@ -1,0 +1,4 @@
+GEMINI_API_KEY=AIzaSyBZetm4cr8Ivist0-hYvUsi9thJ7RHm4uw
+MONGO_URI=mongodb+srv://sahni:sahanidb@clusterforsahni.ilqzkzo.mongodb.net/healthAI
+JWT_SECRET=healthai_super_secret_123
+PORT=5000

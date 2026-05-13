@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - HealthAI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style/about.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h1 class="logo">Health<span>AI</span></h1>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ai-assistant.html">AI Assistant</a></li>
+      <li><a href="record.html">Records</a></li>
+      <li><a href="dashbord.html">Dashboard</a></li>
+      <li><a class="active" href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+</nav>
+<div class="bg-blur"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <h2>About HealthAI</h2>
+  <p>AI-powered healthcare monitoring system built for smarter decisions.</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- Technology Stack -->
+  <section class="card-section">
+    <h2>Technology Stack</h2>
+
+    <div class="stack-cards">
+      <div class="card">
+        <h3>Frontend</h3>
+        <p>HTML, CSS, JavaScript for responsive healthcare dashboards.</p>
+      </div>
+
+      <div class="card">
+        <h3>AI & NLP</h3>
+        <p>Advanced NLP powered by modern AI APIs for smart analysis.</p>
+      </div>
+
+      <div class="card">
+        <h3>Voice Tech</h3>
+        <p>Web Speech API for voice recognition and synthesis.</p>
+      </div>
+
+      <div class="card">
+        <h3>Secure Backend</h3>
+        <p>Secure architecture ensuring patient data privacy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unique Section -->
+  <section class="card-section">
+    <h2>Why This Project Is Unique</h2>
+    <div class="card">
+      <ul class="unique-list">
+        <li>Seamless voice interaction for natural conversations.</li>
+        <li>Real-time AI insights for immediate decision support.</li>
+        <li>User-friendly design accessible across devices.</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div>
+      <h4>HealthAI</h4>
+      <p>AI-powered healthcare assistant for smarter monitoring.</p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+      <p><a href="index.html">Home</a></p>
+      <p><a href="dashbord.html">Dashboard</a></p>
+      <p><a href="ai-assistant.html">AI Assistant</a></p>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>healthai.project@gmail.com</p>
+      <p>SYBCA Hackathon Project</p>
+    </div>
+  </div>
+
+  <p class="copyright">
+    © 2026 HealthAI. All rights reserved.
+  </p>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+</script>
+<script>
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+/* Scroll Reveal */
+const sections = document.querySelectorAll(".card-section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(section => {
+    const top = section.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      section.classList.add("show");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
